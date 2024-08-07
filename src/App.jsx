@@ -4,17 +4,18 @@ import { CORE_CONCEPTS } from './data.js';
 import Header from './components/Header/Header.jsx';
 import CoreConcept from './components/CoreConcepts.jsx';
 import TabButton from './components/TabButton.jsx';
+import { EXAMPLES } from './data.js' ;
 
 function App() {
    
-  const [ selectedTopic, setSelectedTopic] = useState('Please Click A button');
+  const [ selectedTopic, setSelectedTopic] = useState('components');
 
   
 
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', 'state'
    setSelectedTopic(selectedButton);
-    //console.log(setSelectedTopic);
+    //console.log(SelectedTopic);
   }
 
   console.log('APP COMPONENT EXECUTING')
@@ -46,6 +47,9 @@ function App() {
 
 
             <TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
+
+           
+            
             <TabButton onSelect={() => handleSelect('jsx')}>Jsx</TabButton>
             <TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
             <TabButton onSelect={() => handleSelect('state')}>State</TabButton>
@@ -53,7 +57,18 @@ function App() {
 
           </menu>
 
-         {selectedTopic}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+              {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+            
+          </div>
+
+      
 
         </section>
       </main>
